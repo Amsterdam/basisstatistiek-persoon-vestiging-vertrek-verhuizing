@@ -1,0 +1,4 @@
+Verhuizing
+==========
+
+.. include:: README.rst
