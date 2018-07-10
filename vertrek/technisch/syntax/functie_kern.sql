@@ -19,11 +19,27 @@ select
 	a_nummer,
 	bs_nummer,
 	persoon_id,
-	n_gemeente_id as naar_gemeentecode,
-	n_ingeschreven_op as naar_ingeschreven_op,
+	(case when bs_nummer in (select bsnumm from bron.vertrek_rni) and n_gemeente_id = 1999 then
+		null
+	else
+		n_gemeente_id
+	end) as naar_gemeentecode,
+	(case when bs_nummer in (select bsnumm from bron.vertrek_rni) and n_gemeente_id = 1999 then
+		null
+	else
+		n_ingeschreven_op
+	end) as naar_ingeschreven_op,
 	n_kennisgegeven_op as naar_kennisgegeven_op,
-	n_land_id as naar_landcode,
-	n_gevestigd_op as naar_gevestigd_op
+	(case when bs_nummer in (select bsnumm from bron.vertrek_rni) and n_gemeente_id = 1999 then
+		land_code_vertrek
+	else
+		n_land_id
+	end) as naar_landcode,
+	(case when bs_nummer in (select bsnumm from bron.vertrek_rni) and n_gemeente_id = 1999 then
+		n_ingeschreven_op
+	else
+		n_gevestigd_op
+	end) as naar_gevestigd_op
 from
 	(
 	/*
@@ -338,6 +354,24 @@ from
 				(gevestigd_op >= geldigheidsdatum_begin and gevestigd_op < geldigheidsdatum_eind)
 			end)
 		)
-) as a;
+) as a
+--
+-- Voor de RNI gevallen de juiste landcode selecteren ipv RNI
+--
+left join
+	(select
+		*
+	from
+		bron.vertrek_rni) as b
+on
+	a.bs_nummer = b.bsnumm
+and
+	a.n_ingeschreven_op = to_timestamp(b.geldig_op::char(16), 'YYYYMMDDHH24MISSMS')::timestamp without time zone
+where
+	(case when geldigheidsdatum_begin < kennisgevingsdatum_begin then
+		bs_nummer in (select bsnumm from bron.kw20171)
+	else
+		true
+	end);
 
 $$ language sql;

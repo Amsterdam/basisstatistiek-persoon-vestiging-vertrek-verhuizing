@@ -38,7 +38,7 @@ Mutatieberichten
 Uitdraaien van vestigingen
 --------------------------
 
-#. Maak de volgende procedure zoals beschreven in `functie_kern.sql <https://git.datapunt.amsterdam.nl/Basisstatistiek/persoon-vestiging-vertrek-verhuizing/raw/d1f66b02f68a1680c5b8024f2e4d757866899193/vestiging/technisch/syntax/functie_kern.sql>`_ Draai het deel wat onder *stap 1* staat beschreven in `query.sql <https://git.datapunt.amsterdam.nl/Basisstatistiek/persoon-vestiging-vertrek-verhuizing/raw/d1f66b02f68a1680c5b8024f2e4d757866899193/vestiging/technisch/syntax/query.sql>`_ om de kern tabel te maken. Zorg dat de parameters passen bij het tijdvak waarover de statistiek uitgedraaid dient te worden.
+#. Maak de volgende procedure zoals beschreven in `functie_kern.sql <https://git.datapunt.amsterdam.nl/Basisstatistiek/persoon-vestiging-vertrek-verhuizing/raw/e8f783eba6a71a86976452efb27859d6428eb07d/vestiging/technisch/syntax/functie_kern.sql>`_ Draai het deel wat onder *stap 1* staat beschreven in `query.sql <https://git.datapunt.amsterdam.nl/Basisstatistiek/persoon-vestiging-vertrek-verhuizing/raw/d1f66b02f68a1680c5b8024f2e4d757866899193/vestiging/technisch/syntax/query.sql>`_ om de kern tabel te maken. Zorg dat de parameters passen bij het tijdvak waarover de statistiek uitgedraaid dient te worden.
 #. Voor de nagekomen berichten, moeten dezelfde stappen worden gevolgd zoals hierboven staan beschreven. Pas echter het tijdvak waarover de statistiek moet worden gemaakt aan naar de juiste. Daarnaast moeten de aan te maken tabellen en functies andere namen krijgen. Voeg hiervoor achter elke tabelnaam en functie een 1 toe.
 
 Aangehaakte gegevens

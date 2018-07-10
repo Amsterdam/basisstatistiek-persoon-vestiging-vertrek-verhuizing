@@ -38,7 +38,23 @@ Mutatieberichten
 Uitdraaien van vertrek
 ----------------------
 
-#. Maak de volgende procedure zoals beschreven in `functie_kern.sql <https://git.datapunt.amsterdam.nl/Basisstatistiek/persoon-vestiging-vertrek-verhuizing/raw/a7b724867c9f4869e9e3d76f12611a594d875c35/vertrek/technisch/syntax/functie_kern.sql>`_. Draai het deel wat onder *stap 1* staat beschreven in `query.sql <https://git.datapunt.amsterdam.nl/Basisstatistiek/persoon-vestiging-vertrek-verhuizing/raw/a7b724867c9f4869e9e3d76f12611a594d875c35/vertrek/technisch/syntax/query.sql>`_ om de kern tabel te maken. Zorg dat de parameters passen bij het tijdvak waarover de statistiek uitgedraaid dient te worden.
+#. Maak de volgende tabel aan en dump het vertrek RNI CSV bestand:
+
+   .. code-block:: sql
+
+      create table bron.vertrek_rni (
+            bsnumm bigint,
+            mutatiedatum_aangeleverd bigint,
+            geldig_op bigint,
+            kennisgegeven_op bigint,
+            o_straatcode bigint,
+            o_huisnummer bigint,
+            o_huisletter character varying,
+            o_huisnummertoevoeging character varying,
+            o_postcode character varying,
+            land_code_vertrek bigint
+      );
+#. Maak de volgende procedure zoals beschreven in `functie_kern.sql <https://git.datapunt.amsterdam.nl/Basisstatistiek/persoon-vestiging-vertrek-verhuizing/raw/e8f783eba6a71a86976452efb27859d6428eb07d/vertrek/technisch/syntax/functie_kern.sql>`_. Draai het deel wat onder *stap 1* staat beschreven in `query.sql <https://git.datapunt.amsterdam.nl/Basisstatistiek/persoon-vestiging-vertrek-verhuizing/raw/a7b724867c9f4869e9e3d76f12611a594d875c35/vertrek/technisch/syntax/query.sql>`_ om de kern tabel te maken. Zorg dat de parameters passen bij het tijdvak waarover de statistiek uitgedraaid dient te worden.
 #. Voor de nagekomen berichten, moeten dezelfde stappen worden gevolgd zoals hierboven staan beschreven. Pas echter het tijdvak waarover de statistiek moet worden gemaakt aan naar de juiste. Daarnaast moeten de aan te maken tabellen en functies andere namen krijgen. Voeg hiervoor achter elke tabelnaam en functie een 1 toe.
 
 Aangehaakte gegevens
